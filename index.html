@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FF6B35">
+  <title>وصفة ذكية</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Onboarding -->
+  <div id="onboardingScreen" class="onboarding-screen">
+    <div class="onboarding-slides">
+      <div class="onboarding-slide active" data-slide="0">
+        <div class="slide-icon">🍳</div>
+        <h1>مرحباً بك في وصفة ذكية</h1>
+        <p>حوّل المكونات الموجودة في مطبخك إلى وجبات مغربية لذيذة في دقائق</p>
+        <div class="slide-features">
+          <div class="feature">✓ 100+ وصفة مغربية أصيلة</div>
+          <div class="feature">✓ مناسب لميزانيتك ووقتك</div>
+          <div class="feature">✓ بالدارجة والعربية والفرنسية</div>
+        </div>
+      </div>
+      <div class="onboarding-slide" data-slide="1">
+        <div class="slide-icon">🥕</div>
+        <h1>كيف يعمل؟</h1>
+        <div class="steps-visual">
+          <div class="step-item"><span class="step-num">1</span><span>اختر المكونات المتوفرة لديك</span></div>
+          <div class="step-item"><span class="step-num">2</span><span>حدد الوقت المتاح</span></div>
+          <div class="step-item"><span class="step-num">3</span><span>احصل على وصفات مطابقة فوراً</span></div>
+        </div>
+      </div>
+      <div class="onboarding-slide" data-slide="2">
+        <div class="slide-icon">🎁</div>
+        <h1>ابدأ مجاناً اليوم</h1>
+        <p>5 وصفات يومياً مجاناً. ترقّ إلى بريميوم للحصول على:</p>
+        <div class="premium-features">
+          <div class="p-feature">🤖 وصفات AI مبتكرة</div>
+          <div class="p-feature">☁️ مزامنة بين الأجهزة</div>
+          <div class="p-feature">📷 تعرف حقيقي على الصور</div>
+          <div class="p-feature">🚫 بدون إعلانات</div>
+        </div>
+        <p class="premium-price">فقط 29 درهم/شهر أو 249 درهم/سنة</p>
+      </div>
+    </div>
+    <div class="onboarding-footer">
+      <div class="onboarding-dots">
+        <span class="dot active" data-dot="0"></span>
+        <span class="dot" data-dot="1"></span>
+        <span class="dot" data-dot="2"></span>
+      </div>
+      <button id="onboardingNext" class="primary-btn">التالي ←</button>
+      <button id="onboardingSkip" class="skip-btn">تخطي</button>
+    </div>
+  </div>
+
+  <!-- Auth -->
+  <div id="authScreen" class="screen">
+    <header class="app-header">
+      <h1>🔐 تسجيل الدخول</h1>
+      <p class="subtitle">لمزامنة مفضلتك بين الأجهزة</p>
+    </header>
+    <main style="padding: 0 16px;">
+      <div class="card">
+        <input type="email" id="authEmail" placeholder="البريد الإلكتروني" class="auth-input">
+        <input type="password" id="authPassword" placeholder="كلمة المرور" class="auth-input">
+        <button id="loginBtn" class="primary-btn" style="margin-top:12px;">🔓 تسجيل الدخول</button>
+        <button id="signupBtn" class="secondary-btn" style="margin-top:8px;">✨ إنشاء حساب جديد</button>
+        <p style="text-align:center;font-size:12px;color:var(--text-light);margin-top:12px;">أو تابع بدون حساب — بياناتك محفوظة محلياً</p>
+        <button id="skipAuthBtn" class="skip-btn" style="margin-top:8px;">متابعة بدون حساب</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Home -->
+  <div id="homeScreen" class="screen active">
+    <header class="app-header">
+      <div class="header-top">
+        <h1>🍳 وصفة ذكية</h1>
+        <button id="accountBtn" class="account-btn">👤</button>
+      </div>
+      <p class="subtitle">حول مكوناتك إلى وجبة لذيذة</p>
+      <div id="premiumBadge" class="premium-badge hidden">⭐ بريميوم</div>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="ar">عربية</button>
+        <button class="lang-btn" data-lang="darja">دارجة</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+      </div>
+    </header>
+    <main class="home-content">
+      <div id="quotaBanner" class="quota-banner">
+        <span id="quotaText">5 وصفات متبقية اليوم</span>
+        <button id="upgradeBtn" class="upgrade-btn">⭐ ترقية</button>
+      </div>
+      <div class="card welcome-card">
+        <h2>مرحباً بك</h2>
+        <p>اختر المكونات المتوفرة لديك.</p>
+      </div>
+      <div class="card">
+        <h3>🥕 المكونات</h3>
+        <div class="category-tabs" id="categoryTabs">
+          <button class="cat-btn active" data-cat="الكل">الكل</button>
+          <button class="cat-btn" data-cat="خضر">خضر</button>
+          <button class="cat-btn" data-cat="لحوم">لحوم</button>
+          <button class="cat-btn" data-cat="نشويات">نشويات</button>
+          <button class="cat-btn" data-cat="بهارات">بهارات</button>
+          <button class="cat-btn" data-cat="حلويات">حلويات</button>
+        </div>
+        <div class="ingredients-grid" id="ingredientsGrid"></div>
+      </div>
+      <div class="card">
+        <h3>⏱️ الوقت</h3>
+        <div class="time-options" id="timeOptions">
+          <button class="time-btn active" data-time="15">أقل من 15 دقيقة</button>
+          <button class="time-btn" data-time="30">15-30 دقيقة</button>
+          <button class="time-btn" data-time="60">أكثر من 30 دقيقة</button>
+          <button class="time-btn" data-time="180">أكثر من ساعة</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>👥 عدد الأشخاص</h3>
+        <div class="servings-selector">
+          <button class="servings-btn" data-servings="1">1</button>
+          <button class="servings-btn active" data-servings="2">2</button>
+          <button class="servings-btn" data-servings="4">4</button>
+          <button class="servings-btn" data-servings="6">6</button>
+          <button class="servings-btn" data-servings="8">8</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🎉 المناسبات</h3>
+        <div class="occasion-tabs" id="occasionTabs">
+          <button class="occ-btn active" data-occ="الكل">الكل</button>
+          <button class="occ-btn" data-occ="رمضان">رمضان</button>
+          <button class="occ-btn" data-occ="العيد">العيد</button>
+          <button class="occ-btn" data-occ="فطور">فطور</button>
+          <button class="occ-btn" data-occ="غداء">غداء</button>
+          <button class="occ-btn" data-occ="عشاء">عشاء</button>
+        </div>
+      </div>
+      <div class="card ai-card">
+        <label class="ai-toggle">
+          <input type="checkbox" id="useAI">
+          <span class="toggle-slider"></span>
+          <span class="ai-label">🤖 استخدم الذكاء الاصطناعي</span>
+        </label>
+        <p class="ai-hint">ميزة بريميوم</p>
+      </div>
+      <button id="generateBtn" class="primary-btn">✨ اقترح وصفات</button>
+    </main>
+  </div>
+
+  <!-- Camera -->
+  <div id="cameraScreen" class="screen">
+    <header class="app-header"><h1>📷 تصوير</h1></header>
+    <main class="camera-content">
+      <div class="camera-preview" id="cameraPreview">
+        <video id="video" autoplay playsinline class="hidden"></video>
+        <canvas id="canvas" class="hidden"></canvas>
+        <div id="photoPreview" class="photo-preview hidden"></div>
+        <div id="cameraPlaceholder" class="camera-placeholder">
+          <span>📸</span><p>التقط صورة لمكوناتك</p>
+        </div>
+      </div>
+      <div class="camera-actions">
+        <button id="startCameraBtn" class="primary-btn">📷 تشغيل الكاميرا</button>
+        <button id="captureBtn" class="primary-btn hidden">🔵 التقاط</button>
+        <label for="fileInput" class="secondary-btn">🖼️ اختيار صورة</label>
+        <input type="file" id="fileInput" accept="image/*" class="hidden">
+      </div>
+      <div id="detectedResult" class="card hidden">
+        <h3>✅ حدد المكونات</h3>
+        <div id="detectedIngredients" class="detected-list"></div>
+        <button id="addDetectedBtn" class="primary-btn">➕ أضف للوصفات</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Results -->
+  <div id="resultsScreen" class="screen">
+    <header class="app-header results-header">
+      <button id="backBtn" class="back-btn">← رجوع</button>
+      <h1>الوصفات</h1>
+      <div style="width:40px;"></div>
+    </header>
+    <main class="results-content">
+      <div id="loadingSpinner" class="loading-spinner hidden">
+        <div class="spinner"></div>
+        <p>جاري التحضير...</p>
+      </div>
+      <div id="recipesList" class="recipes-list"></div>
+      <div id="noResults" class="no-results hidden"><p>😔 لم نجد وصفات مطابقة.</p></div>
+    </main>
+  </div>
+
+  <!-- Favorites -->
+  <div id="favoritesScreen" class="screen">
+    <header class="app-header"><h1>❤️ المفضلة</h1></header>
+    <main>
+      <div id="favoritesList" class="recipes-list"></div>
+      <div id="noFavorites" class="no-results"><p>💔 لا توجد وصفات مفضلة.</p></div>
+    </main>
+  </div>
+
+  <!-- Shopping -->
+  <div id="shoppingScreen" class="screen">
+    <header class="app-header"><h1>🛒 قائمة التسوق</h1></header>
+    <main>
+      <div class="card">
+        <button id="clearShoppingBtn" class="secondary-btn">🗑️ مسح الكل</button>
+        <button id="shareShoppingBtn" class="secondary-btn" style="margin-top:8px;">📤 مشاركة واتساب</button>
+      </div>
+      <div id="shoppingList" class="shopping-list"></div>
+      <div id="noShopping" class="no-results"><p>🛒 القائمة فارغة.</p></div>
+    </main>
+  </div>
+
+  <!-- Account -->
+  <div id="accountScreen" class="screen">
+    <header class="app-header"><h1>👤 حسابي</h1></header>
+    <main style="padding:0 16px;">
+      <div id="userInfoCard" class="card hidden">
+        <h3>مرحباً 👋</h3>
+        <p id="userEmail" style="color:var(--text-light);font-size:14px;"></p>
+        <button id="logoutBtn" class="secondary-btn" style="margin-top:12px;">🚪 تسجيل الخروج</button>
+      </div>
+      <div id="guestCard" class="card">
+        <h3>أنت غير مسجل</h3>
+        <p style="font-size:14px;color:var(--text-light);margin:8px 0;">سجل لمزامنة مفضلتك بين الأجهزة</p>
+        <button id="goToAuthBtn" class="primary-btn">🔐 تسجيل الدخول</button>
+      </div>
+      <div class="card">
+        <h3>⭐ حالة الاشتراك</h3>
+        <p id="subscriptionStatus" style="font-size:14px;margin:8px 0;">مجاني</p>
+        <button id="manageSubBtn" class="primary-btn">ترقية إلى بريميوم</button>
+      </div>
+      <div class="card">
+        <h3>📊 إحصائياتي</h3>
+        <div id="statsContent"></div>
+      </div>
+      <div class="card">
+        <h3>⚙️ الإعدادات</h3>
+        <button id="setApiKeyBtn" class="secondary-btn">🔑 إعداد مفتاح AI</button>
+        <button id="resetDataBtn" class="secondary-btn" style="margin-top:8px;">🗑️ مسح كل البيانات</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav" id="bottomNav">
+    <button class="nav-btn active" data-screen="homeScreen">🏠 <span>الرئيسية</span></button>
+    <button class="nav-btn" data-screen="cameraScreen">📷 <span>تصوير</span></button>
+    <button class="nav-btn" data-screen="favoritesScreen">❤️ <span>المفضلة</span></button>
+    <button class="nav-btn" data-screen="shoppingScreen">🛒 <span>التسوق</span></button>
+  </nav>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="data/translations.js"></script>
+  <script src="data/ingredients.js"></script>
+  <script src="data/recipes.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="payment.js"></script>
+  <script src="ai-service.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
